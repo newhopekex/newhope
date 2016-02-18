@@ -1,0 +1,37 @@
+##############################################################
+###################### Newhope Software ######################
+##############################################################
+
+This software package includes 2 implementations of the "newhope"
+RLWE-based key exchange:
+
+- ref (reference implementation in ISO C)
+- avx2 (optimized AVX2 implementation targeting Intel Haswell)
+
+
+In each of the 2 subdirectories, build the software by running 'make'. This
+will produce 4 binaries in the test subdirectory: 
+
+- test/test_newhope:     test multiple properties of the key exchange, in
+                         particular that both parties indeed agree on a joint
+                         key
+- test/test_statistical: print statistics of the distribution of ones and
+                         zeroes of agreed keys before final hashing
+- test/testvectors:      compute and output test vectors to ensure
+                         compatibility of implementations. Note that the avx2
+                         implementation also uses Chacha20 here to generate
+                         noise; this ensures compatibility to the ref
+                         implementation. In the other binaries, the avx2
+                         implementation uses AES-256 in counter mode to
+                         generate uniform noise
+- test/speed:            run benchmarks and print results)
+
+
+
+##############################################################
+###################### Newhope  Scripts ######################
+##############################################################
+
+
+Additionally, you will find a subdirectory called scripts containing 5 Python
+scripts. These are the scripts referenced in the paper.
